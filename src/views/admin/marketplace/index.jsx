@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 
 // Chakra imports
 import {
@@ -9,6 +9,7 @@ import {
   useColorModeValue,
   SimpleGrid,
 } from "@chakra-ui/react";
+
 
 import NFT from "components/card/NFT";
 
@@ -25,6 +26,10 @@ export default function Marketplace() {
   // Chakra Color Mode
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const textColorBrand = useColorModeValue("brand.500", "white");
+
+  
+ 
+
   return (
     <Box pt={{ base: "200px", md: "80px", xl: "80px" }}>
       <Flex direction='column'
@@ -79,8 +84,10 @@ export default function Marketplace() {
                 name='Améliorateur de contenu'
                
                 image={Nft2}
+                 
                
               />
+            
               <NFT
                 name='articles de blog idées de sujet'
                

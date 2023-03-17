@@ -47,8 +47,7 @@ export default function Banner() {
         fontWeight='500'
         mb='40px'
         lineHeight='28px'>
-        Enter in this creative world. Commencer the latest NFTs or start
-        creating your own!
+        Explorez notre bibliothèque croissante d'outils puissants spécialement conçus pour écrire du contenu persuasif et engageant pour votre site Web, des vidéos publicitaires et plus encore. Assemblez-les pour créer votre contenu fini
       </Text>
       <Flex align='center'>
         <Button

@@ -36,7 +36,6 @@ export default function UserReports() {
       <SimpleGrid mb='20px'>
         <Banner/>
       </SimpleGrid>
-     
       <Grid
         mb='20px'
         gridTemplateColumns={{ xl: "repeat(3, 1fr)", "2xl": "1fr 0.46fr" }}

@@ -8,6 +8,7 @@ import { SidebarContext } from "contexts/SidebarContext";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "routes.js";
+import Contenu from "views/admin/contenu";
 
 // Custom Chakra theme
 export default function Dashboard(props) {
@@ -155,10 +156,14 @@ export default function Dashboard(props) {
               pt='50px'>
               <Switch>
                 {getRoutes(routes)}
+                <Route path='/admin/contenu' component={Contenu}/>
+
                 <Redirect from='/' to='/admin/default' />
               </Switch>
             </Box>
           ) : null}
+
+
           <Box>
             <Footer />
           </Box>
