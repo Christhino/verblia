@@ -12,6 +12,7 @@ import {
   Text,
   useColorModeValue,
   SimpleGrid,
+  Grid
 } from "@chakra-ui/react";
 
 
@@ -40,7 +41,9 @@ export default  function  Contenu() {
     return (
         <Box pt={{ base: "500px", md: "80px", xl: "80px" }}>
             <Flex direction='column'
-                gridArea={{ xl: "1 / 1 / 2 / 3", "3xl": "1 / 1 / 3 / 4" }}>
+                gridArea={{ xl: "1 / 1 / 2 / 3", "3xl": "1 / 1 / 3 / 4" }}
+                // gridArea: {repeat(2, minmax(0, 1fr))}
+            >
                 <Flex
                     mt='45px'
                     mb='20px'
@@ -83,10 +86,10 @@ export default  function  Contenu() {
                         </Flex>
                         
                 </Flex>
-                <SimpleGrid 
-                   columns={{ base: 1, md: 3 }}
-                   gap='25px'
-                   mb={{ base: "20px", xl: "0px" }}
+                <Flex 
+                  templateColumns='repeat(2, 1fr)' gap={2}
+                  direction={{ base: "column", md: "row" }}
+                  align={{ base: "start", md: "center" }}
                 >
                     <Editor
                         onInit={(evt, editor) => editorRef.current = editor}
@@ -94,6 +97,7 @@ export default  function  Contenu() {
                                 apiKey="dnxjyerv251deu0nuoy2zohlhmy3er72k0xzrieo3dirl5eb"
                                 init={{
                                     height: 300,
+                                    width:'100%',
                                     menubar: true,
                                     plugins: [
                                         'advlist autolink lists link image charmap print preview anchor',
@@ -144,7 +148,7 @@ export default  function  Contenu() {
                                 }}
                         onEditorChange={onEditorChange}
                     />
-                </SimpleGrid>    
+                </Flex>    
                    
             </Flex> 
         </Box>

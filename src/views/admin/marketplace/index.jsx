@@ -106,6 +106,7 @@ export default function Marketplace() {
               fontWeight='700'>
               Autre template
             </Text>
+            
             <SimpleGrid
               columns={{ base: 1, md: 3 }}
               gap='20px'
