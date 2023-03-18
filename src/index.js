@@ -14,7 +14,6 @@ function App() {
     console.error = function() {};
   }
   
-  debugger;
   return (
     <ChakraProvider theme={theme}>
       <React.StrictMode>
