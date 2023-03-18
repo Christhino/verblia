@@ -15,6 +15,7 @@ import {
 // Admin Imports
 import MainDashboard from "views/admin/default";
 import NFTMarketplace from "views/admin/marketplace";
+import Contenu from "views/admin/contenu";
 import Profile from "views/admin/profile";
 
 
@@ -39,14 +40,15 @@ const routes = [
         color='inherit'
       />
     ),
-    component: NFTMarketplace,
+    component: Contenu,
     secondary: true,
     children: [
       {
-        name: "Exemple",
+        name: "Contenu",
         layout: "/admin",
-        path: "/exemple",
-        component: MainDashboard,
+        path: "/contenuleka",
+        component: Contenu,
+        hideFromSidebar: true 
       },
     ],
   },
@@ -56,6 +58,7 @@ const routes = [
     path: "/profile",
     icon: <Icon as={MdPerson} width='20px' height='20px' color='inherit' />,
     component: Profile,
+    hideFromSidebar: true 
   },
 ];
 
