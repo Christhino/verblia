@@ -7,18 +7,28 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "theme/theme";
 import { ThemeEditorProvider } from "@hypertheme-editor/chakra-ui";
 
-ReactDOM.render(
-  <ChakraProvider theme={theme}>
-    <React.StrictMode>
-      <ThemeEditorProvider>
-        <BrowserRouter>
-          <Switch>
-            <Route path={`/admin`} component={AdminLayout} />
-            <Redirect from='/' to='/admin' />
-          </Switch>
-        </BrowserRouter>
-      </ThemeEditorProvider>
-    </React.StrictMode>
-  </ChakraProvider>,
-  document.getElementById("root")
-);
+function App() {
+  if (process.env.NODE_ENV !== 'development') {
+    console.log = function() {};
+    console.warn = function() {};
+    console.error = function() {};
+  }
+  
+  debugger;
+  return (
+    <ChakraProvider theme={theme}>
+      <React.StrictMode>
+        <ThemeEditorProvider>
+          <BrowserRouter>
+            <Switch>
+              <Route path={`/admin`} component={AdminLayout} />
+              <Redirect from='/' to='/admin' />
+            </Switch>
+          </BrowserRouter>
+        </ThemeEditorProvider>
+      </React.StrictMode>
+    </ChakraProvider>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));

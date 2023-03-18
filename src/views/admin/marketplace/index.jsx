@@ -75,26 +75,30 @@ export default function Marketplace() {
               </Flex>
             </Flex>
             <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px'>
-              <NFT
-                name='Écrire des articles de blog' 
-                image={Nft1}
 
-              />
-              <NFT
-                name='Améliorateur de contenu'
-               
-                image={Nft2}
-                 
-               
-              />
-            
-              <NFT
-                name='articles de blog idées de sujet'
-               
-              
-                image={Nft3}
-              
-              />
+              <Link 
+                href="/admin/contenu"
+              >
+                <NFT
+                  name='Écrire des articles de blog' 
+                  image={Nft1}
+                />
+              </Link>
+
+              <Link to="/admin/contenu">
+                <NFT
+                  name='Améliorateur de contenu'    
+                  image={Nft2}           
+                />
+              </Link>
+
+              <Link to="/admin/contenu">
+                  <NFT
+                    name='articles de blog idées de sujet'
+                    image={Nft3}
+                  />
+              </Link>
+
             </SimpleGrid>
             
             <Text
