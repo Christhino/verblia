@@ -7,16 +7,19 @@ import {
   MdPerson,
   MdHome,
   MdOutlineShoppingCart,
+  MdChat,
 } from "react-icons/md";
-
+import {
+  FaRobot
+} from "react-icons/fa"
 import {
   HiTemplate
 } from "react-icons/hi";
 // Admin Imports
 import MainDashboard from "views/admin/default";
 import NFTMarketplace from "views/admin/marketplace";
-import Contenu from "views/admin/contenu";
 import Profile from "views/admin/profile";
+import Contenu from "views/admin/contenu";
 
 
 
@@ -28,6 +31,7 @@ const routes = [
     icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
     component: MainDashboard,
   },
+ 
   {
     name: "Template",
     layout: "/admin",
@@ -40,17 +44,15 @@ const routes = [
         color='inherit'
       />
     ),
-    component: Contenu,
+    component: NFTMarketplace,
     secondary: true,
-    children: [
-      {
-        name: "Contenu",
-        layout: "/admin",
-        path: "/contenuleka",
-        component: Contenu,
-        hideFromSidebar: true 
-      },
-    ],
+  },
+  {
+    name: "Mon assistant",
+    layout: "/admin",
+    path: "/contenu",
+    icon: <Icon as={FaRobot} width='20px' height='20px' color='inherit' />,
+    component: Contenu,
   },
   {
     name: "Profile",
@@ -58,7 +60,6 @@ const routes = [
     path: "/profile",
     icon: <Icon as={MdPerson} width='20px' height='20px' color='inherit' />,
     component: Profile,
-    hideFromSidebar: true 
   },
 ];
 

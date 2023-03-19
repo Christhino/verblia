@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from 'react'
-
+import { ReactElement } from 'react';
 
 import { Editor } from '@tinymce/tinymce-react';
 import { BouncingBalls } from "react-cssfx-loading";
@@ -24,17 +24,88 @@ import {
   TagLeftIcon,
   TagRightIcon,
   TagCloseButton,
-  HStack 
+  HStack, 
+  Center,
+  Avatar,
+  AvatarBadge,
+  Badge,
+  GridItem,
+
+  Button,
+  Container,
+  Heading,
+  Icon,
+ 
 } from "@chakra-ui/react";
 
 
-import { Button } from "@chakra-ui/button"
+import {
+    FcAbout,
+    FcAssistant,
+    FcCollaboration,
+    FcDonate,
+    FcManager,
+} from 'react-icons/fc';
+
+import {
+    GiFountainPen,
+    
+} from "react-icons/gi";
+import {
+    BiBookContent,
+    BiParagraph
+} from "react-icons/bi";
+import {
+    GrArticle
+} from "react-icons/gr";
+import {
+    MdArticle
+} from "react-icons/md";
+
+
 import { Spinner } from '@chakra-ui/react'
 
 import Card from "components/card/Card.js";
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
-import  {  API_URL } from "data/API_URL"
+import  {  API_URL } from "data/API_URL";
+
+
+
+function Cards({ heading, description, icon, href }) {
+    return (
+      <Box
+        maxW={{ base: 'full', md: '275px' }}
+        w={'full'}
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+        p={5}>
+        <Stack align={'start'} spacing={2}>
+          <Flex
+            w={16}
+            h={16}
+            align={'center'}
+            justify={'center'}
+            color={'white'}
+            rounded={'full'}
+            bg={useColorModeValue('gray.100', 'gray.700')}>
+            {icon}
+          </Flex>
+          <Box mt={2}>
+            <Heading size="md">{heading}</Heading>
+            <Text mt={1} fontSize={'sm'}>
+              {description}
+            </Text>
+          </Box>
+          <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
+            Learn more
+          </Button>
+        </Stack>
+      </Box>
+    );
+}
+
 
 export default  function  Contenu(props) {
 
@@ -90,13 +161,49 @@ export default  function  Contenu(props) {
 
     
     return (
-        <Box pt={{ base: "40px", md: "80px", xl: "80px" }}>
+        <>
+            <Box>
+                <Container maxW={'5xl'} mt={24}>
+
+                    <Flex flexWrap="wrap" gridGap={6} justify="center">
+
+                        <Cards
+                            heading={'Poser des questions complexes'}
+                            icon={<Icon as={FcAssistant} w={10} h={10} />}
+                            description={
+                            'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                            }
+                            href={'#'}
+                        />
+                        <Cards
+                            heading={'Générer du contenu professionnel'}
+                            icon={<Icon as={FcCollaboration} w={10} h={10} />}
+                            description={
+                            'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                            }
+                            href={'#'}
+                        />
+                        <Cards
+                            heading={'Rédiges des articles '}
+                            icon={<Icon as={FcDonate} w={10} h={10} />}
+                            description={
+                            'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                            }
+                            href={'#'}
+                        />
+
+                    </Flex>
+
+                </Container>
+            </Box>
+        
             <Flex direction='column'
                 gridArea={{ xl: "1 / 1 / 2 / 3", "3xl": "1 / 1 / 3 / 4" }}
-            >
+            >   
                 <Flex
                     mt='45px'
                     mb='20px'
+                    
                     justifyContent='space-between'
                     direction={{ base: "column", md: "row" }}
                     align={{ base: "start", md: "center" }}
@@ -115,13 +222,6 @@ export default  function  Contenu(props) {
                             me={{ base: "34px", md: "44px" }}
                             to='#art'>
                             Contenu
-                            </Link>
-                            <Link
-                            color={textColorBrand}
-                            fontWeight='500'
-                            me={{ base: "34px", md: "44px" }}
-                            to='#music'>
-                            Generateur de paragraphe
                             </Link>
                             <Link
                             color={textColorBrand}
@@ -195,7 +295,7 @@ export default  function  Contenu(props) {
                         width='100%'
                         >
                             <TabList>
-                                <Tab>Resultat </Tab>
+                                <Tab>Reponse </Tab>
                             </TabList>
                             
                             <TabPanels p='2rem'> 
@@ -240,6 +340,7 @@ export default  function  Contenu(props) {
                 </Flex>    
                    
             </Flex> 
-        </Box>
+       
+        </>
     )
 }

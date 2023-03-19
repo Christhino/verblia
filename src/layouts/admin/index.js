@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Chakra imports
 import { Portal, Box, useDisclosure } from "@chakra-ui/react";
 import Footer from "components/footer/FooterAdmin.js";
@@ -6,7 +7,7 @@ import Navbar from "components/navbar/NavbarAdmin.js";
 import Sidebar from "components/sidebar/Sidebar.js";
 import { SidebarContext } from "contexts/SidebarContext";
 import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch,BrowserRouter} from "react-router-dom";
 import routes from "routes.js";
 import Contenu from "views/admin/contenu";
 
@@ -154,12 +155,16 @@ export default function Dashboard(props) {
               pe='20px'
               minH='100vh'
               pt='50px'>
-              <Switch>
-                {getRoutes(routes)}
-                <Route path='/admin/contenu' component={Contenu}/>
+                
+                  <Switch>
+                   
+                      {getRoutes(routes)}
+                      <Route path='/admin/contenu' component={Contenu}/>
 
-                <Redirect from='/' to='/admin/default' />
-              </Switch>
+                      <Redirect from='/' to='/admin/default' />
+                  
+                  </Switch>
+               
             </Box>
           ) : null}
 
