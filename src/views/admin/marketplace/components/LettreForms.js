@@ -22,8 +22,14 @@ import {
   BsRobot
 } from 'react-icons/bs';
 import { Editor } from '@tinymce/tinymce-react';
+import  {  API_URL } from "data/API_URL";
 
-export  default function ArticleForm() {
+export  default function LettreForm() {
+    
+    const [title, setTitle] = useState('');
+    const [nom, setNom] = useState('');
+    const [prenom, setPrenom] = useState('');
+    const [body, setBody] = useState('');
 
     //wysiswyg
     const editorRef = useRef(null);
@@ -32,13 +38,28 @@ export  default function ArticleForm() {
         console.log(editorRef.current.getContent());
         }
     };
+    const [apiResult, setApiResult] = useState();
 
+    const handleSubmit = async () => {
+        try {
+            const response = await fetch(API_URL+'/motivation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, nom, prenom ,body}),
+            });
+            const data = await response.json();
+            setApiResult(data.message);
+            setBody(data.body);
+            console.log(data.message)
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return(
         <>
            <Grid
               templateRows={{ base: "1fr 1fr", md: "none" }}
               templateColumns={{ base: "none", md: "repeat(2, 1fr)" }}
-           
               w="100%"
               color="white"
               fontSize="4xl"
@@ -72,36 +93,53 @@ export  default function ArticleForm() {
                           </Text>
                         </Heading>
                         <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
-                        Créez des articles d'une longueur maximale de 1500 mots en seulement quatre étapes grâce à un processus guidé. Vous pouvez choisir le titre, l'introduction et le plan, et les personnaliser selon vos besoins.
+                          Reformulez votre contenu dans une voix et un style différents pour attirer des lecteurs différents.
                         </Text>
                       </Stack>
+
                       <Box as={'form'} mt={10}>
                         <Stack spacing={4}>
-                          <Input
-                            placeholder="Titre de l'article"
-                            bg={'gray.200'}
-                            border={0}
-                            color={'gray.500'}
-                            _placeholder={{
-                              color: 'gray.500',
-                            }}
-                          />
-                          <Textarea 
-                            placeholder="Bref descriptif  de  l'article"
-                            bg={'gray.200'}
-                            height="200"
-                            border={0}
-                            color={'gray.500'}
-                            _placeholder={{
-                              color: 'gray.500',
-                            }}
-                          />
+                           <Input
+                                placeholder="Votre titre"
+                                bg={'gray.200'}
+                                border={0}
+                                color={'gray.500'}
+                                value={title}
+                                onChange={(event) => setTitle(event.target.value)}
+                            />
+                            <Input
+                                placeholder="Votre Nom"
+                                bg={'gray.200'}
+                                border={0}
+                                color={'gray.500'}
+                                value={nom}
+                                onChange={(event) => setNom(event.target.value)}
+                            />
+                            <Input
+                                placeholder="Votre prenom"
+                                bg={'gray.200'}
+                                border={0}
+                                color={'gray.500'}
+                                value={prenom}
+                                onChange={(event) => setPrenom(event.target.value)}
+                            />
+                            <Textarea
+                                placeholder="Votre BIO"
+                                bg={'gray.200'}
+                                height="200"
+                                border={0}
+                                color={'gray.500'}
+                                value={body}
+                                onChange={(event) => setBody(event.target.value)}
+                            />
                         </Stack>
                         <Button
                           // fontFamily={'heading'}
                           mt={8}
-                          colorScheme='teal' variant='outline'
-                          >
+                          colorScheme='teal' 
+                          variant='outline'
+                          onClick={handleSubmit}
+                        >
                           Générer
                         </Button>
                       </Box>
@@ -118,6 +156,7 @@ export  default function ArticleForm() {
                   <Editor
                       onInit={(evt, editor) => editorRef.current = editor}
                       initialValue="<p>This is the initial content of the editor.</p>"
+                      value={JSON.stringify(apiResult).replace(/\n\n/g, '')}
                       init={{
                         height: "80vh",
                         width: "100%",

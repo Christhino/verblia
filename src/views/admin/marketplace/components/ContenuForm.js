@@ -62,7 +62,7 @@ export  default function ContenuForm() {
                           color={'gray.800'}
                           lineHeight={1.1}
                           fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
-                           Votre solde : 15 756 mots premium
+                           Votre solde : 10 000 mots premium
                           <Text
                             as={'span'}
                             bgGradient="linear(to-r, red.400,pink.400)"

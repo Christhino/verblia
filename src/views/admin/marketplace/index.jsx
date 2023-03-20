@@ -63,6 +63,7 @@ import ContenuForm from './components/ContenuForm';
 import ArticleForm from './components/ArtileForm';
 import ParagrapheForm from './components/ParagrapheForme';
 import ReseauForm from './components/ResauForm';
+import LettreForm from './components/LettreForms';
 
 
 
@@ -108,16 +109,19 @@ export default function Marketplace() {
   const [isOpenModal2, setIsOpenModal2] = useState(false);
   const [isOpenModal3, setIsOpenModal3] = useState(false);
   const [isOpenModal4, setIsOpenModal4] = useState(false);
+  const [isOpenModal5, setIsOpenModal5] = useState(false);
 
   const handleClickModal1 = () => setIsOpenModal1(true);
   const handleClickModal2 = () => setIsOpenModal2(true);
   const handleClickModal3 = () => setIsOpenModal3(true);
   const handleClickModal4 = () => setIsOpenModal4(true);
+  const handleClickModal5 = () => setIsOpenModal5(true);
 
   const handleCloseModal1 = () => setIsOpenModal1(false);
   const handleCloseModal2 = () => setIsOpenModal2(false);
   const handleCloseModal3 = () => setIsOpenModal3(false);
   const handleCloseModal4 = () => setIsOpenModal4(false);
+  const handleCloseModal5 = () => setIsOpenModal5(false);
 
 
   return (
@@ -167,9 +171,9 @@ export default function Marketplace() {
               </Flex>
               <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px'>
               
-                <Box  onClick={() => handleClickModal1('full')}>
+                <Box  onClick={() => handleClickModal5('full')}>
                   <NFT
-                    name='Écrire des articles de blog' 
+                    name='Générateur  de lettre de motivation' 
                     image={Nft1}
                     
                   />
@@ -229,6 +233,27 @@ export default function Marketplace() {
         </Flex>
         
       </Box>
+      <Modal onClose={handleCloseModal5} size="full" isOpen={isOpenModal5}>
+        <ModalOverlay />
+        <ModalContent>
+         
+            <ModalHeader >
+              <Flex  gap={5}>
+                <Icon as={BsRobot} color="#2A9D8F"   w={8} h={8}/>
+                AI Lettre de motivation Writer 3.0
+              </Flex>
+            </ModalHeader>
+        
+          <ModalCloseButton />
+          <ModalBody>     
+              <LettreForm/>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={handleCloseModal5}>Ferme</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
 
       <Modal onClose={handleCloseModal1} size="full" isOpen={isOpenModal1}>
         <ModalOverlay />
