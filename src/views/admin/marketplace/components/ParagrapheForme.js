@@ -18,9 +18,6 @@ import {
   Input,
  
 } from "@chakra-ui/react";
-import {
-  BsRobot
-} from 'react-icons/bs';
 import { Editor } from '@tinymce/tinymce-react';
 
 export  default function ParagrapheForm() {
