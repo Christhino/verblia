@@ -107,7 +107,7 @@ export  default function ParagrapheForm() {
                           mt={8}
                           colorScheme='teal' variant='outline'
                           >
-                          Régénérer l'article
+                          Générer
                         </Button>
                       </Box>
               

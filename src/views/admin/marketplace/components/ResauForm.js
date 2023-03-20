@@ -23,7 +23,7 @@ import {
 } from 'react-icons/bs';
 import { Editor } from '@tinymce/tinymce-react';
 
-export  default function ContenuForm() {
+export  default function ReseauForm() {
 
     //wysiswyg
     const editorRef = useRef(null);
@@ -71,13 +71,13 @@ export  default function ContenuForm() {
                           </Text>
                         </Heading>
                         <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
-                          Reformulez votre contenu dans une voix et un style différents pour attirer des lecteurs différents.
+                          Des copies d'annonces Facebook qui font que vos annonces se démarquent vraiment.
                         </Text>
                       </Stack>
                       <Box as={'form'} mt={10}>
                         <Stack spacing={4}>
                           <Input
-                            placeholder="Titre du  contenu"
+                            placeholder="Nom du produit/service"
                             bg={'gray.200'}
                             border={0}
                             color={'gray.500'}
@@ -86,9 +86,27 @@ export  default function ContenuForm() {
                             }}
                           />
                           <Textarea 
-                            placeholder="Bref descriptif  du  contenu"
+                            placeholder="Description du produit/service"
                             bg={'gray.200'}
                             height="200"
+                            border={0}
+                            color={'gray.500'}
+                            _placeholder={{
+                              color: 'gray.500',
+                            }}
+                          />
+                          <Input
+                            placeholder="Occasion"
+                            bg={'gray.200'}
+                            border={0}
+                            color={'gray.500'}
+                            _placeholder={{
+                              color: 'gray.500',
+                            }}
+                          />
+                          <Input
+                            placeholder="Promotion"
+                            bg={'gray.200'}
                             border={0}
                             color={'gray.500'}
                             _placeholder={{

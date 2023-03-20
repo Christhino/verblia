@@ -38,6 +38,11 @@ import {
   BsParagraph
 } from 'react-icons/bs';
 import {
+  SlSocialInstagram
+} from 'react-icons/sl';
+
+
+import {
   BiBookContent
 } from 'react-icons/bi';
 
@@ -57,6 +62,7 @@ import Nft6 from "assets/img/nfts/Nft6.png";
 import ContenuForm from './components/ContenuForm';
 import ArticleForm from './components/ArtileForm';
 import ParagrapheForm from './components/ParagrapheForme';
+import ReseauForm from './components/ResauForm';
 
 
 
@@ -101,14 +107,18 @@ export default function Marketplace() {
   const [isOpenModal1, setIsOpenModal1] = useState(false);
   const [isOpenModal2, setIsOpenModal2] = useState(false);
   const [isOpenModal3, setIsOpenModal3] = useState(false);
+  const [isOpenModal4, setIsOpenModal4] = useState(false);
 
   const handleClickModal1 = () => setIsOpenModal1(true);
   const handleClickModal2 = () => setIsOpenModal2(true);
   const handleClickModal3 = () => setIsOpenModal3(true);
+  const handleClickModal4 = () => setIsOpenModal4(true);
 
   const handleCloseModal1 = () => setIsOpenModal1(false);
   const handleCloseModal2 = () => setIsOpenModal2(false);
   const handleCloseModal3 = () => setIsOpenModal3(false);
+  const handleCloseModal4 = () => setIsOpenModal4(false);
+
 
   return (
     <>
@@ -202,11 +212,14 @@ export default function Marketplace() {
                     image={Nft4}
                   />
                 </Box>
-                <NFT
-                  name='Texte préliminaire des publicités'
-                  image={Nft5}
-                
-                />
+
+                <Box  onClick={() => handleClickModal4('full')}>
+                  <NFT
+                    name='Texte préliminaire des publicités'
+                    image={Nft5}
+                  
+                  />
+                </Box>  
 
                 <NFT
                   name='Traduction'
@@ -277,6 +290,27 @@ export default function Marketplace() {
           </ModalBody>
           <ModalFooter>
             <Button onClick={handleCloseModal3}>Ferme</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <Modal onClose={handleCloseModal4} size="full" isOpen={isOpenModal4}>
+        <ModalOverlay />
+        <ModalContent>
+         
+            <ModalHeader >
+              <Flex  gap={5}>
+                <Icon as={SlSocialInstagram} color="#2A9D8F"   w={8} h={8}/>
+                AI annonces Writer 3.0
+              </Flex>
+            </ModalHeader>
+        
+          <ModalCloseButton />
+          <ModalBody>     
+              <ReseauForm/>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={handleCloseModal4}>Ferme</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
