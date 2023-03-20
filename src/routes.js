@@ -54,13 +54,6 @@ const routes = [
     icon: <Icon as={FaRobot} width='20px' height='20px' color='inherit' />,
     component: Contenu,
   },
-  {
-    name: "Profile",
-    layout: "/admin",
-    path: "/profile",
-    icon: <Icon as={MdPerson} width='20px' height='20px' color='inherit' />,
-    component: Profile,
-  },
 ];
 
 export default routes;

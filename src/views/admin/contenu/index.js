@@ -41,8 +41,8 @@ import {
 
 import {
     FcAbout,
-    FcAssistant,
-    FcCollaboration,
+    FcQuestions,
+    FcReadingEbook,
     FcDonate,
     FcManager,
 } from 'react-icons/fc';
@@ -169,7 +169,7 @@ export default  function  Contenu(props) {
 
                         <Cards
                             heading={'Poser des questions complexes'}
-                            icon={<Icon as={FcAssistant} w={10} h={10} />}
+                            icon={<Icon as={FcQuestions} w={10} h={10} />}
                             description={
                             'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
                             }
@@ -177,7 +177,7 @@ export default  function  Contenu(props) {
                         />
                         <Cards
                             heading={'Générer du contenu professionnel'}
-                            icon={<Icon as={FcCollaboration} w={10} h={10} />}
+                            icon={<Icon as={FcReadingEbook} w={10} h={10} />}
                             description={
                             'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
                             }
