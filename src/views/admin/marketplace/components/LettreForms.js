@@ -156,7 +156,7 @@ export  default function LettreForm() {
                   <Editor
                       onInit={(evt, editor) => editorRef.current = editor}
                       initialValue="<p>This is the initial content of the editor.</p>"
-                      value={JSON.stringify(apiResult).replace(/\n\n/g, '')}
+                      value={apiResult}
                       init={{
                         height: "80vh",
                         width: "100%",
