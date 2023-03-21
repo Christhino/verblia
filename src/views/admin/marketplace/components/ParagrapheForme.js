@@ -16,20 +16,45 @@ import {
   Heading,
   Container,
   Input,
+  Spinner,
  
 } from "@chakra-ui/react";
 import { Editor } from '@tinymce/tinymce-react';
-
+import  {  API_URL } from "data/API_URL";
 export  default function ParagrapheForm() {
+  const [sujet, setSujet] = useState('');
+  const [keywords, setKeywords] = useState('');
+  const [tonalite, setTonalite] = useState('');
 
-    //wysiswyg
+
+    //wysiswyg 
     const editorRef = useRef(null);
     const log = () => {
         if (editorRef.current) {
         console.log(editorRef.current.getContent());
         }
     };
-
+   
+    const [apiResult, setApiResult] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const handleSubmit = async () => {
+      try {
+        setIsLoading(true);
+          const response = await fetch(API_URL+'/paragraphe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ sujet ,keywords,tonalite}),
+          });
+          const data = await response.json();
+          setApiResult(data.message);
+          setTonalite(data.tonalite);
+          console.log(data.message)
+          setIsLoading(false);
+      } catch (error) {
+          console.error(error);
+      }
+  };
     return(
         <>
            <Grid
@@ -79,6 +104,8 @@ export  default function ParagrapheForm() {
                             bg={'gray.200'}
                             border={0}
                             color={'gray.500'}
+                            value={sujet}
+                            onChange={(event) => setSujet(event.target.value)}
                             _placeholder={{
                               color: 'gray.500',
                             }}
@@ -87,6 +114,8 @@ export  default function ParagrapheForm() {
                             placeholder="Mots clés : page d'accueil, annonces Google, annonces Facebook"
                             bg={'gray.200'}
                             border={0}
+                            value={keywords}
+                            onChange={(event) => setKeywords(event.target.value)}
                             color={'gray.500'}
                             _placeholder={{
                               color: 'gray.500',
@@ -95,6 +124,8 @@ export  default function ParagrapheForm() {
                          <Input
                             placeholder="Ton de la voix"
                             bg={'gray.200'}
+                            value={tonalite}
+                            onChange={(event) => setTonalite(event.target.value)}
                             border={0}
                             color={'gray.500'}
                             _placeholder={{
@@ -106,6 +137,13 @@ export  default function ParagrapheForm() {
                           // fontFamily={'heading'}
                           mt={8}
                           colorScheme='teal' variant='outline'
+                          onClick={handleSubmit}
+                          rightIcon=
+                            {
+                                isLoading && 
+                                <Spinner />
+                                
+                            } 
                           >
                           Générer
                         </Button>
@@ -123,6 +161,7 @@ export  default function ParagrapheForm() {
                   <Editor
                       onInit={(evt, editor) => editorRef.current = editor}
                       initialValue="<p>Vos copies créées par l'intelligence artificielle apparaîtront ici.</p>"
+                      value={apiResult}
                       init={{
                         height: "80vh",
                         width: "100%",

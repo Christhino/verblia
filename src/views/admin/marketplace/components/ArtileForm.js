@@ -16,15 +16,18 @@ import {
   Heading,
   Container,
   Input,
+  Spinner,
  
 } from "@chakra-ui/react";
 import {
   BsRobot
 } from 'react-icons/bs';
 import { Editor } from '@tinymce/tinymce-react';
-
+import  {  API_URL } from "data/API_URL";
 export  default function ArticleForm() {
 
+  const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
     //wysiswyg
     const editorRef = useRef(null);
     const log = () => {
@@ -32,7 +35,27 @@ export  default function ArticleForm() {
         console.log(editorRef.current.getContent());
         }
     };
+    
+    const [apiResult, setApiResult] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
+    const handleSubmit = async () => {
+        try {
+          setIsLoading(true);
+            const response = await fetch(API_URL+'/article', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title ,body}),
+            });
+            const data = await response.json();
+            setApiResult(data.message);
+            setBody(data.body);
+            console.log(data.message)
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return(
         <>
            <Grid
@@ -82,6 +105,8 @@ export  default function ArticleForm() {
                             bg={'gray.200'}
                             border={0}
                             color={'gray.500'}
+                            value={title}
+                            onChange={(event) => setTitle(event.target.value)}
                             _placeholder={{
                               color: 'gray.500',
                             }}
@@ -90,6 +115,8 @@ export  default function ArticleForm() {
                             placeholder="Bref descriptif  de  l'article"
                             bg={'gray.200'}
                             height="200"
+                            value={body}
+                            onChange={(event) => setBody(event.target.value)}
                             border={0}
                             color={'gray.500'}
                             _placeholder={{
@@ -101,6 +128,13 @@ export  default function ArticleForm() {
                           // fontFamily={'heading'}
                           mt={8}
                           colorScheme='teal' variant='outline'
+                          onClick={handleSubmit}
+                          rightIcon=
+                            {
+                                isLoading && 
+                                <Spinner />
+                                
+                            } 
                           >
                           Générer
                         </Button>
@@ -118,6 +152,7 @@ export  default function ArticleForm() {
                   <Editor
                       onInit={(evt, editor) => editorRef.current = editor}
                       initialValue="<p>Vos copies créées par l'intelligence artificielle apparaîtront ici.</p>"
+                      value={apiResult}
                       init={{
                         height: "80vh",
                         width: "100%",
