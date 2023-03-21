@@ -75,7 +75,7 @@ export  default function ParagrapheForm() {
                       rounded={'xl'}
                       p={{ base: 4, sm: 6, md: 6 }}
                       spacing={{ base: 8 }}
-                      h="80vh"
+                      h={{ base: 'auto', md: '80vh' }}
                       maxW={800}
                       
                     >
@@ -97,7 +97,7 @@ export  default function ParagrapheForm() {
                         Rédigez des paragraphes courts et percutants qui transforment vos lecteurs en clients.
                         </Text>
                       </Stack>
-                      <Box as={'form'} mt={10}>
+                      <Box as={'form'}>
                         <Stack spacing={4}>
                           <Input
                             placeholder="Sujet : L'intelligence artificielle est l'avenir du copywriting"

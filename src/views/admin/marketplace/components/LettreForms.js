@@ -78,9 +78,8 @@ export  default function LettreForm() {
                       rounded={'xl'}
                       p={{ base: 4, sm: 6, md: 6 }}
                       spacing={{ base: 8 }}
-                      h="80vh"
+                      h={{ base: 'auto', md: '80vh' }}
                       maxW={800}
-                      
                     >
                       
                       <Stack spacing={4}>
@@ -101,7 +100,7 @@ export  default function LettreForm() {
                         </Text>
                       </Stack>
 
-                      <Box as={'form'} mt={10}>
+                      <Box as={'form'} >
                         <Stack spacing={4}>
                            <Input
                                 placeholder="Votre titre"
@@ -159,7 +158,6 @@ export  default function LettreForm() {
                 </Box>
                 </Flex>
               </GridItem>
-
               {/* Page 2 */}
               <GridItem bg="white" w="100%" h="100%">
                 <Flex justifyContent="center" alignItems="center" h="100%">

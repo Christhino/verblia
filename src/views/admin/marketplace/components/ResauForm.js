@@ -89,7 +89,7 @@ export  default function ReseauForm() {
                       rounded={'xl'}
                       p={{ base: 4, sm: 6, md: 6 }}
                       spacing={{ base: 8 }}
-                      h="80vh"
+                      h={{ base: 'auto', md: '80vh' }}
                       maxW={800}
                       
                     >
@@ -111,7 +111,7 @@ export  default function ReseauForm() {
                           Des copies d'annonces Facebook qui font que vos annonces se démarquent vraiment.
                         </Text>
                       </Stack>
-                      <Box as={'form'} mt={10}>
+                      <Box as={'form'}>
                         <Stack spacing={4}>
 
                           <Input

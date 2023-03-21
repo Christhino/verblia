@@ -76,7 +76,7 @@ export  default function ArticleForm() {
                       rounded={'xl'}
                       p={{ base: 4, sm: 6, md: 6 }}
                       spacing={{ base: 8 }}
-                      h="80vh"
+                      h={{ base: 'auto', md: '80vh' }}
                       maxW={800}
                       
                     >
@@ -98,7 +98,7 @@ export  default function ArticleForm() {
                         Créez des articles d'une longueur maximale de 1500 mots en seulement quatre étapes grâce à un processus guidé. Vous pouvez choisir le titre, l'introduction et le plan, et les personnaliser selon vos besoins.
                         </Text>
                       </Stack>
-                      <Box as={'form'} mt={10}>
+                      <Box as={'form'} >
                         <Stack spacing={4}>
                           <Input
                             placeholder="Titre de l'article"
