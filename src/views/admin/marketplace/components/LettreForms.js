@@ -16,6 +16,7 @@ import {
   Heading,
   Container,
   Input,
+  Spinner,
  
 } from "@chakra-ui/react";
 import {
@@ -35,13 +36,15 @@ export  default function LettreForm() {
     const editorRef = useRef(null);
     const log = () => {
         if (editorRef.current) {
-        console.log(editorRef.current.getContent());
+           console.log(editorRef.current.getContent());
         }
     };
     const [apiResult, setApiResult] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async () => {
         try {
+          setIsLoading(true);
             const response = await fetch(API_URL+'/motivation', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -51,6 +54,7 @@ export  default function LettreForm() {
             setApiResult(data.message);
             setBody(data.body);
             console.log(data.message)
+            setIsLoading(false);
         } catch (error) {
             console.error(error);
         }
@@ -139,6 +143,12 @@ export  default function LettreForm() {
                           colorScheme='teal' 
                           variant='outline'
                           onClick={handleSubmit}
+                          rightIcon=
+                            {
+                                isLoading && 
+                                <Spinner />
+                                
+                            } 
                         >
                           Générer
                         </Button>
@@ -155,12 +165,13 @@ export  default function LettreForm() {
                 <Flex justifyContent="center" alignItems="center" h="100%">
                   <Editor
                       onInit={(evt, editor) => editorRef.current = editor}
-                      initialValue="<p>This is the initial content of the editor.</p>"
+                      initialValue="<p>Vos copies créées par l'intelligence artificielle apparaîtront ici.</p>"
                       value={apiResult}
                       init={{
                         height: "80vh",
                         width: "100%",
                         menubar: false,
+                        autoformat: true,
                         plugins: [
                           'advlist autolink lists link image charmap print preview anchor',
                           'searchreplace visualblocks code fullscreen',

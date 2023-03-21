@@ -122,7 +122,7 @@ export  default function ParagrapheForm() {
                 <Flex justifyContent="center" alignItems="center" h="100%">
                   <Editor
                       onInit={(evt, editor) => editorRef.current = editor}
-                      initialValue="<p>This is the initial content of the editor.</p>"
+                      initialValue="<p>Vos copies créées par l'intelligence artificielle apparaîtront ici.</p>"
                       init={{
                         height: "80vh",
                         width: "100%",
