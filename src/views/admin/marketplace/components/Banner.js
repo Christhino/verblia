@@ -2,7 +2,7 @@
 import React from "react";
 
 // Chakra imports
-import { Button, Flex,Text } from "@chakra-ui/react";
+import { Button, Flex,Link,Text } from "@chakra-ui/react";
 
 // Assets
 import banner from "assets/img/nfts/NftBanner1.png";
@@ -50,19 +50,21 @@ export default function Banner() {
         Explorez notre bibliothèque croissante d'outils puissants spécialement conçus pour écrire du contenu persuasif et engageant pour votre site Web, des vidéos publicitaires et plus encore. Assemblez-les pour créer votre contenu fini
       </Text>
       <Flex align='center'>
-        <Button
-          bg='white'
-          color='black'
-          _hover={{ bg: "whiteAlpha.900" }}
-          _active={{ bg: "white" }}
-          _focus={{ bg: "white" }}
-          fontWeight='500'
-          fontSize='14px'
-          py='20px'
-          px='27'
-          me='38px'>
-          Commencer
-        </Button>
+        <Link href="/admin/template">
+          <Button
+            bg='white'
+            color='black'
+            _hover={{ bg: "whiteAlpha.900" }}
+            _active={{ bg: "white" }}
+            _focus={{ bg: "white" }}
+            fontWeight='500'
+            fontSize='14px'
+            py='20px'
+            px='27'
+            me='38px'>
+            Commencer
+          </Button>
+        </Link>
         {/* <Link>
           <Text color='white' fontSize='sm' fontWeight='500'>
             Watch video
